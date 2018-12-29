@@ -1,0 +1,8 @@
+apply from: "../lib.build.gradle"
+
+dependencies {
+    api project(':lib_base')
+
+    // 阿里路由框架
+    api rootProject.ext.dependencies["arouter-api"]
+}
