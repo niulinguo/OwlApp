@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MainAppTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/main_splash_bg</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+    </style>
+</resources>

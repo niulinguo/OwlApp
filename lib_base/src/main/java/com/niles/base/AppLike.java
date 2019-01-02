@@ -1,8 +1,7 @@
 package com.niles.base;
 
+import com.blankj.utilcode.util.Utils;
 import com.niles.base.app.BaseAppLike;
-
-import timber.log.Timber;
 
 /**
  * Created by Niles
@@ -11,15 +10,16 @@ import timber.log.Timber;
  */
 public class AppLike extends BaseAppLike {
 
-    public AppLike() {
-        // 初始化 Log
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // 初始化工具类
+        Utils.init(getApplication());
     }
 
     @Override
     protected String getModuleName() {
-        return "基础库";
+        return getResources().getString(R.string.base_app_name);
     }
 }

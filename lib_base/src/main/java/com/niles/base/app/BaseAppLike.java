@@ -2,9 +2,9 @@ package com.niles.base.app;
 
 import android.content.res.Resources;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.niles.base.BuildConfig;
 import com.niles.separate.application.AbsApplicationLike;
-
-import timber.log.Timber;
 
 /**
  * Created by Niles
@@ -13,12 +13,14 @@ import timber.log.Timber;
  */
 public abstract class BaseAppLike extends AbsApplicationLike {
 
-    protected final String TAG = getClass().getName();
+    protected final String TAG = getClass().getSimpleName();
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Timber.tag(TAG).d("【" + getModuleName() + "】已加载");
+        if (BuildConfig.DEBUG) {
+            LogUtils.dTag(TAG, "【" + getModuleName() + "】已加载");
+        }
     }
 
     protected abstract String getModuleName();
