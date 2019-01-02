@@ -22,4 +22,11 @@ public class DebugMainActivity extends BaseActivity {
                 .build(RouterPath.MainModule.Activity.Splash)
                 .navigation(this);
     }
+
+    public void openMainTabActivity(View view) {
+        ARouter
+                .getInstance()
+                .build(RouterPath.MainModule.Activity.MainTab)
+                .navigation(this);
+    }
 }

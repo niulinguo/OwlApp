@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.niles.main">
 
-    <application/>
+    <application>
+        <!--主页面（主TAB页）-->
+        <activity android:name=".activity.MainTabActivity"/>
+    </application>
 </manifest>

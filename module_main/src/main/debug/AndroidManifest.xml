@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        tools:replace="android:label">
         <activity android:name=".debug.DebugMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,9 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!--闪屏页-->
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/MainAppTheme"/>
+        <!--主页面（主TAB页）-->
+        <activity android:name=".activity.MainTabActivity"/>
     </application>
 
 </manifest>

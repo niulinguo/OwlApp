@@ -9,6 +9,68 @@ package com.niles.router;
  */
 public interface RouterPath {
 
+    // 路由模块
+    interface RouterModule {
+
+        // Fragment 页面
+        interface Fragment {
+
+            // Fragment 404
+            String Lost = "/router/fragment/lost";
+        }
+
+        // Activity 页面
+        interface Activity {
+
+            // Activity 404
+            String Lost = "/router/activity/lost";
+        }
+    }
+
+    // 首页模块
+    interface HomeModule {
+
+        // Fragment 页面
+        interface Fragment {
+
+            // 首页
+            String Home = "/home/fragment/home";
+        }
+    }
+
+    // 工作模块
+    interface WorkModule {
+
+        // Fragment 页面
+        interface Fragment {
+
+            // 工作页
+            String Work = "/work/fragment/work";
+        }
+    }
+
+    // 消息模块
+    interface MessageModule {
+
+        // Fragment 页面
+        interface Fragment {
+
+            // 消息页
+            String Message = "/message/fragment/message";
+        }
+    }
+
+    // 我的模块
+    interface MimeModule {
+
+        // Fragment 页面
+        interface Fragment {
+
+            // 我的页
+            String Mime = "/mime/fragment/mime";
+        }
+    }
+
     // 主模块
     interface MainModule {
 

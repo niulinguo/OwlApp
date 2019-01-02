@@ -14,4 +14,11 @@
         android:text="跳转闪屏页面"
         tools:ignore="HardcodedText"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openMainTabActivity"
+        android:text="跳转主页面"
+        tools:ignore="HardcodedText"/>
+
 </LinearLayout>

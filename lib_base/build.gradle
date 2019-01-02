@@ -1,7 +1,7 @@
 apply from: "../lib.build.gradle"
 
 dependencies {
-    //公用资源在base中依赖
+    // 公用资源在 base 中依赖
     api project(':lib_res')
     // 组件分身框架
     api rootProject.ext.niulinguo["SeparateSDK"]
