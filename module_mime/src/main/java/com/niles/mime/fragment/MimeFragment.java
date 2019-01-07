@@ -3,7 +3,6 @@ package com.niles.mime.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.ToastUtils;
 import com.niles.base.fragment.BaseFragment;
 import com.niles.router.RouterPath;
 import com.niles.router.service.LoginService;
@@ -49,14 +47,13 @@ public class MimeFragment extends BaseFragment {
 
     private void logout() {
         mLoginService.logout();
-        FragmentActivity activity = getActivity();
-        if (activity != null) {
-            ARouter
-                    .getInstance()
-                    .build(RouterPath.SignModule.Activity.Login)
-                    .navigation(activity);
-            activity.finish();
-        }
-        ToastUtils.showShort("请重新登录");
+
+        navigation(ARouter
+                .getInstance()
+                .build(RouterPath.SignModule.Activity.Login));
+
+        finish();
+
+        toast("请重新登录");
     }
 }

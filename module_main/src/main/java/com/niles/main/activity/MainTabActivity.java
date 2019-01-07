@@ -66,7 +66,7 @@ public class MainTabActivity extends BaseActivity {
             }
         });
         if (fragment == null) {
-            fragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.Name, mTabNames[index]).navigation(this);
+            fragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.NAME, mTabNames[index]).navigation(this);
         }
         return fragment;
     }

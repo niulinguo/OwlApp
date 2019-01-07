@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.Postcard;
  * Date 2019/1/7 10:12
  * Email niulinguo@163.com
  */
-public class PostcardWrapModel {
+public class NavigationParamWrap {
 
     private Postcard mPostcard;
     private int mRc;

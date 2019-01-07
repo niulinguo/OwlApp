@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.niles.base.able.ToastAble;
-import com.niles.base.vm.message.SingleLiveEvent;
 
 /**
  * Created by Niles
@@ -16,12 +15,12 @@ import com.niles.base.vm.message.SingleLiveEvent;
  */
 public class ToastMessage extends SingleLiveEvent<String> {
 
-    public void observe(@NonNull LifecycleOwner owner, @NonNull final ToastAble toastAble) {
+    public void observe(@NonNull LifecycleOwner owner, @NonNull final ToastAble observer) {
         super.observe(owner, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 if (!TextUtils.isEmpty(s)) {
-                    toastAble.toast(s);
+                    observer.toast(s);
                 }
             }
         });

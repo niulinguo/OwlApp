@@ -7,13 +7,13 @@ package com.niles.router;
  */
 public interface RouterParamKey {
 
-    String Name = "name";
-    String Value = "value";
-    String Key = "key";
-    String Phone = "phone";
-    String Username = "username";
-    String Password = "password";
-    String Id = "id";
-    String UserInfo = "user_info";
+    String NAME = "name";
+    String VALUE = "value";
+    String KEY = "key";
+    String PHONE = "phone";
+    String USERNAME = "username";
+    String PASSWORD = "password";
+    String ID = "id";
+    String USER_INFO = "user_info";
 
 }

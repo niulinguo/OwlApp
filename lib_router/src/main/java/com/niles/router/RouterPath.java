@@ -94,6 +94,15 @@ public interface RouterPath {
 
             // 登录页面
             String Login = "/sign/activity/login";
+
+            // 注册页面
+            String REGISTER = "/sign/activity/register";
+
+            // 找回密码页面
+            String FIND_PW = "/sign/activity/find_pw";
+
+            // 用户协议页面
+            String USER_PROTOCOL = "/sign/activity/user_protocol";
         }
 
         // 服务

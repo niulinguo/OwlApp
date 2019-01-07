@@ -12,11 +12,11 @@ import com.niles.base.vm.command.ClickCommand;
  * Date 2018/12/29 18:13
  * Email niulinguo@163.com
  */
-public class MyBindingAdapter {
+public class CommonBindingAdapter {
 
     private static long sLastClickTime;
 
-    @BindingAdapter("command:onClick")
+    @BindingAdapter("common:onClick")
     public static void onClick(View view, final ClickCommand clickCommand) {
         view.setClickable(true);
         view.setOnClickListener(new View.OnClickListener() {

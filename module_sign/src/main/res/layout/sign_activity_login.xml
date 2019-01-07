@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:command="http://schemas.android.com/apk/res-auto"
+        xmlns:common="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -50,21 +50,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="登录"
-            command:onClick="@{viewModel.mLoginClickCommand}"
+            common:onClick="@{viewModel.mLoginClickCommand}"
             tools:ignore="HardcodedText"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="注册"
-            command:onClick="@{viewModel.mRegisterClickCommand}"
+            common:onClick="@{viewModel.mRegisterClickCommand}"
             tools:ignore="HardcodedText"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="找回密码"
-            command:onClick="@{viewModel.mFindPwdClickCommand}"
+            common:onClick="@{viewModel.mFindPwdClickCommand}"
             tools:ignore="HardcodedText"/>
     </LinearLayout>
 </layout>

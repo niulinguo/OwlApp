@@ -21,7 +21,7 @@ import com.niles.base.fragment.BaseFragment;
 @Route(path = RouterPath.RouterModule.Fragment.Lost)
 public class LostFragment extends BaseFragment {
 
-    @Autowired(name = RouterParamKey.Name)
+    @Autowired(name = RouterParamKey.NAME)
     String mName;
 
     @Override
