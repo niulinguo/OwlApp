@@ -1,10 +1,11 @@
-package com.niles.base.binding;
+package com.niles.base.vm.binding;
 
 import android.databinding.BindingAdapter;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.niles.base.BuildConfig;
+import com.niles.base.vm.command.ClickCommand;
 
 /**
  * Created by Niles
@@ -15,8 +16,8 @@ public class MyBindingAdapter {
 
     private static long sLastClickTime;
 
-    @BindingAdapter("my:onClick")
-    public static void onClick(View view, final View.OnClickListener listener) {
+    @BindingAdapter("command:onClick")
+    public static void onClick(View view, final ClickCommand clickCommand) {
         view.setClickable(true);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,17 +26,17 @@ public class MyBindingAdapter {
                 if (currTime - sLastClickTime > 1000) {
                     sLastClickTime = currTime;
                     try {
-                        listener.onClick(v);
+                        clickCommand.onClick();
                     } catch (Exception e) {
                         // 点击异常
                         if (BuildConfig.DEBUG) {
-                            LogUtils.eTag("click", e);
+                            LogUtils.eTag("onClick", e);
                         }
                     }
                 } else {
                     // 一秒内重复点击
                     if (BuildConfig.DEBUG) {
-                        LogUtils.eTag("click", "重复点击");
+                        LogUtils.eTag("onClick", "重复点击");
                     }
                 }
             }

@@ -1,57 +1,61 @@
 package com.niles.main.activity;
 
-import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.niles.base.activity.BaseActivity;
+import com.niles.base.vm.BaseViewModel;
+import com.niles.base.vm.MVVMBaseActivity;
 import com.niles.main.R;
 import com.niles.main.databinding.MainActivitySplashBinding;
 import com.niles.main.vm.SplashViewModel;
 import com.niles.router.RouterPath;
+import com.niles.router.service.LoginService;
 
 /**
  * 闪屏页
  */
 @Route(path = RouterPath.MainModule.Activity.Splash)
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends MVVMBaseActivity {
+
+    @Autowired(name = RouterPath.SignModule.Service.Login)
+    LoginService mLoginService;
 
     private MainActivitySplashBinding mBinding;
+    private SplashViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity_splash);
 
-        // 获取 ViewModel
-        SplashViewModel vm = ViewModelProviders.of(this).get(SplashViewModel.class);
-        // 跳转主页面行为
-        vm.mToMainAction.observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(@Nullable Void aVoid) {
-                toMainAction();
-            }
-        });
         // 页面绑定 ViewModel
-        mBinding.setViewModel(vm);
+        mBinding.setViewModel(mViewModel);
 
-        if (savedInstanceState == null) {
-            // 开始倒计时
-            vm.startCountdown();
-        }
+        // 开始倒计时
+        mViewModel.startCountdown();
     }
 
-    private void toMainAction() {
-        // 跳转主页面
-        ARouter
-                .getInstance()
-                .build(RouterPath.MainModule.Activity.MainTab)
-                .navigation(this);
-        finish();
+    @Override
+    protected BaseViewModel createViewModel() {
+        // 获取 ViewModel
+        mViewModel = ViewModelProviders.of(this, new ViewModelProvider.Factory() {
+            @NonNull
+            @Override
+            public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+                //noinspection unchecked
+                return (T) new SplashViewModel(mLoginService);
+            }
+        }).get(SplashViewModel.class);
+
+        return mViewModel;
     }
 
     @Override

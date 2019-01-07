@@ -1,12 +1,14 @@
 package com.niles.main.vm;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 import android.os.CountDownTimer;
-import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
+import com.niles.base.vm.BaseViewModel;
+import com.niles.base.vm.command.ClickCommand;
+import com.niles.router.RouterPath;
+import com.niles.router.service.LoginService;
 
 /**
  * Created by Niles
@@ -15,17 +17,16 @@ import com.blankj.utilcode.util.LogUtils;
  * <p>
  * 闪屏页 ViewModel
  */
-public class SplashViewModel extends ViewModel {
+public class SplashViewModel extends BaseViewModel {
 
-    // 【跳转主页面】
-    public final MutableLiveData<Void> mToMainAction = new MutableLiveData<>();
     // 【倒计时控件】显示的字符串
-    public final ObservableField<String> mCountdownText = new ObservableField<>();
+    public final ObservableField<String> mCountdownText = new ObservableField<>("3");
+    private final LoginService mLoginService;
     // 【倒计时控件】点击监听
-    public final View.OnClickListener mCountdownClickListener = new View.OnClickListener() {
+    public final ClickCommand mCountdownClickCommand = new ClickCommand() {
         @Override
-        public void onClick(View v) {
-            mToMainAction.postValue(null);
+        public void onClick() {
+            toMainAction();
         }
     };
     // 计时器
@@ -41,15 +42,23 @@ public class SplashViewModel extends ViewModel {
         public void onFinish() {
             LogUtils.e("onFinish");
             // 倒计时结束，跳转主页面
-            mToMainAction.postValue(null);
+            toMainAction();
         }
     };
+    private boolean mCountDownStatus = false;
+
+    public SplashViewModel(LoginService loginService) {
+        mLoginService = loginService;
+    }
 
     /**
      * 启动计时器
      */
     public void startCountdown() {
-        mCountDownTimer.start();
+        if (!mCountDownStatus) {
+            mCountDownStatus = true;
+            mCountDownTimer.start();
+        }
     }
 
     @Override
@@ -57,5 +66,19 @@ public class SplashViewModel extends ViewModel {
         super.onCleared();
         // 取消计时器
         mCountDownTimer.cancel();
+        mCountDownStatus = false;
+    }
+
+    private void toMainAction() {
+        if (mLoginService.hasLogin()) {
+            mNavigationMessage.setValue(ARouter
+                    .getInstance()
+                    .build(RouterPath.MainModule.Activity.MainTab));
+        } else {
+            mNavigationMessage.setValue(ARouter
+                    .getInstance()
+                    .build(RouterPath.SignModule.Activity.Login));
+        }
+        mFinishMessage.setValue(null);
     }
 }

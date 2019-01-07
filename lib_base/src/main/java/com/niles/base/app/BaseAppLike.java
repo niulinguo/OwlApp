@@ -1,6 +1,7 @@
 package com.niles.base.app;
 
 import android.content.res.Resources;
+import android.os.Handler;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.niles.base.BuildConfig;
@@ -14,6 +15,7 @@ import com.niles.separate.application.AbsApplicationLike;
 public abstract class BaseAppLike extends AbsApplicationLike {
 
     protected final String TAG = getClass().getSimpleName();
+    private final Handler mHandler = new Handler();
 
     @Override
     public void onCreate() {
@@ -27,5 +29,9 @@ public abstract class BaseAppLike extends AbsApplicationLike {
 
     protected Resources getResources() {
         return getApplication().getResources();
+    }
+
+    public Handler getHandler() {
+        return mHandler;
     }
 }

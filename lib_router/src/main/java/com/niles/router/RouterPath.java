@@ -85,4 +85,22 @@ public interface RouterPath {
         }
 
     }
+
+    // 认证模块
+    interface SignModule {
+
+        // Activity 页面
+        interface Activity {
+
+            // 登录页面
+            String Login = "/sign/activity/login";
+        }
+
+        // 服务
+        interface Service {
+
+            // 登录服务
+            String Login = "/sign/service/login";
+        }
+    }
 }

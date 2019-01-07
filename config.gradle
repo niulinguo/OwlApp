@@ -33,7 +33,9 @@ ext {
 
     niulinguo = [
             // 安卓组件分身框架
-            "SeparateSDK": "com.github.niulinguo:SeparateSDK:v1.1"
+            "SeparateSDK"    : "com.github.niulinguo:SeparateSDK:v1.1",
+            // 单例池
+            "InstancePoolSDK": "com.github.niulinguo:InstancePoolSDK:v1.1",
     ]
 
     // 依赖第三方配置
@@ -70,5 +72,7 @@ ext {
             "timber"                  : "com.jakewharton.timber:timber:4.7.1",
             // 工具类
             "utilcode"                : "com.blankj:utilcode:1.22.7",
+            // SP
+            "hawk"                    : "com.orhanobut:hawk:2.0.1",
     ]
 }

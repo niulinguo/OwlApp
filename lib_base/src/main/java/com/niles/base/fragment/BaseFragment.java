@@ -1,5 +1,9 @@
 package com.niles.base.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.niles.separate.fragment.FragmentLikeManager;
 import com.niles.separate.fragment.SeparateFragment;
 
@@ -14,5 +18,12 @@ public abstract class BaseFragment extends SeparateFragment {
     protected void onRegisterFragmentLike(FragmentLikeManager likeManager) {
         super.onRegisterFragmentLike(likeManager);
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // ARouter 注入
+        ARouter.getInstance().inject(this);
     }
 }

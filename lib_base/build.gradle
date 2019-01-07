@@ -5,8 +5,14 @@ dependencies {
     api project(':lib_res')
     // 组件分身框架
     api rootProject.ext.niulinguo["SeparateSDK"]
+    // 单例池
+    api rootProject.ext.niulinguo["InstancePoolSDK"]
     // 工具类
     api rootProject.ext.dependencies["utilcode"]
     // lifecycle
     api rootProject.ext.dependencies["lifecycle-extensions"]
+    // SP
+    api rootProject.ext.dependencies["hawk"]
+    // 阿里路由框架
+    api rootProject.ext.dependencies["arouter-api"]
 }

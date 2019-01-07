@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:command="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.niles.sign.vm.LoginViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入用户名"
+            android:inputType="text"
+            android:text="@={viewModel.mUserEditText}"
+            tools:ignore="Autofill,HardcodedText"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:text="@={viewModel.mPasswordText}"
+            tools:ignore="Autofill,HardcodedText"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={viewModel.mRememberPwdChecked}"
+            android:text="记住密码"
+            tools:ignore="HardcodedText"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={viewModel.mReadProtocolChecked}"
+            android:text="用户协议"
+            tools:ignore="HardcodedText"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            command:onClick="@{viewModel.mLoginClickCommand}"
+            tools:ignore="HardcodedText"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            command:onClick="@{viewModel.mRegisterClickCommand}"
+            tools:ignore="HardcodedText"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="找回密码"
+            command:onClick="@{viewModel.mFindPwdClickCommand}"
+            tools:ignore="HardcodedText"/>
+    </LinearLayout>
+</layout>

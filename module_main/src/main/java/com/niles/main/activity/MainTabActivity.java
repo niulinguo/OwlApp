@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.niles.base.activity.BaseActivity;
 import com.niles.main.R;
@@ -29,6 +31,7 @@ public class MainTabActivity extends BaseActivity {
 
     private final String[] mTabNames = new String[]{"首页", "工作", "消息", "我的"};
     private final List<Fragment> mFragments = new ArrayList<>();
+
     private MainActivityMainTabBinding mBinding;
 
     @Override
@@ -40,23 +43,39 @@ public class MainTabActivity extends BaseActivity {
         initTab();
     }
 
+    private Fragment createFragment(String routerPath, int index) {
+        Fragment fragment = (Fragment) ARouter.getInstance().build(routerPath).navigation(this, new NavigationCallback() {
+            @Override
+            public void onFound(Postcard postcard) {
+
+            }
+
+            @Override
+            public void onLost(Postcard postcard) {
+
+            }
+
+            @Override
+            public void onArrival(Postcard postcard) {
+
+            }
+
+            @Override
+            public void onInterrupt(Postcard postcard) {
+
+            }
+        });
+        if (fragment == null) {
+            fragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.Name, mTabNames[index]).navigation(this);
+        }
+        return fragment;
+    }
+
     private void initFragments() {
-        Fragment homeFragment = (Fragment) ARouter.getInstance().build(RouterPath.HomeModule.Fragment.Home).navigation(this);
-        if (homeFragment == null) {
-            homeFragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.Name, mTabNames[0]).navigation(this);
-        }
-        Fragment workFragment = (Fragment) ARouter.getInstance().build(RouterPath.WorkModule.Fragment.Work).navigation(this);
-        if (workFragment == null) {
-            workFragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.Name, mTabNames[1]).navigation(this);
-        }
-        Fragment messageFragment = (Fragment) ARouter.getInstance().build(RouterPath.MessageModule.Fragment.Message).navigation(this);
-        if (messageFragment == null) {
-            messageFragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.Name, mTabNames[2]).navigation(this);
-        }
-        Fragment mimeFragment = (Fragment) ARouter.getInstance().build(RouterPath.MimeModule.Fragment.Mime).navigation(this);
-        if (mimeFragment == null) {
-            mimeFragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.Name, mTabNames[3]).navigation(this);
-        }
+        Fragment homeFragment = createFragment(RouterPath.HomeModule.Fragment.Home, 0);
+        Fragment workFragment = createFragment(RouterPath.WorkModule.Fragment.Work, 1);
+        Fragment messageFragment = createFragment(RouterPath.MessageModule.Fragment.Message, 2);
+        Fragment mimeFragment = createFragment(RouterPath.MimeModule.Fragment.Mime, 3);
 
         mFragments.add(homeFragment);
         mFragments.add(workFragment);
