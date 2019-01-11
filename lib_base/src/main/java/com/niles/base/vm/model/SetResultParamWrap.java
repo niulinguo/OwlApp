@@ -7,7 +7,7 @@ import android.content.Intent;
  * Date 2019/1/7 10:32
  * Email niulinguo@163.com
  */
-public class ActivityResultModel {
+public class SetResultParamWrap {
 
     private int mResultCode;
     private Intent mData;

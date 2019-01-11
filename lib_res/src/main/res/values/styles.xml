@@ -20,6 +20,12 @@
         <item name="android:background">@color/viewLineColor</item>
     </style>
 
+    <style name="ViewGroupLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:background">@color/appBackColor</item>
+    </style>
+
     <style name="ViewVerticalLineStyle">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>

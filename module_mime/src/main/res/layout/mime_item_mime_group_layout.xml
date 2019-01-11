@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.niles.mime.vm.MimeItemViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appBackColor"
+        android:orientation="vertical">
+
+        <View
+            style="@style/ViewLineStyle"
+            android:visibility="@{viewModel.mTopLineShow ? View.VISIBLE : View.GONE}"/>
+
+        <View style="@style/ViewGroupLineStyle"/>
+
+        <View
+            style="@style/ViewLineStyle"
+            android:visibility="@{viewModel.mBottomLineShow ? View.VISIBLE : View.GONE}"/>
+
+    </LinearLayout>
+</layout>
