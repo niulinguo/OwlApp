@@ -24,4 +24,15 @@ public class SimpleSetResultMessage extends SingleLiveEvent<Integer> {
             }
         });
     }
+
+    public void observeForever(@NonNull final SetResultAble observer) {
+        super.observeForever(new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer resultCode) {
+                if (resultCode != null) {
+                    observer.setActivityResult(resultCode);
+                }
+            }
+        });
+    }
 }

@@ -25,4 +25,15 @@ public class NavigationWithRcMessage extends SingleLiveEvent<NavigationParamWrap
             }
         });
     }
+
+    public void observeForever(@NonNull final NavigationAble observer) {
+        super.observeForever(new Observer<NavigationParamWrap>() {
+            @Override
+            public void onChanged(@Nullable NavigationParamWrap navigationParamWrap) {
+                if (navigationParamWrap != null) {
+                    observer.navigation(navigationParamWrap.getPostcard(), navigationParamWrap.getRc());
+                }
+            }
+        });
+    }
 }

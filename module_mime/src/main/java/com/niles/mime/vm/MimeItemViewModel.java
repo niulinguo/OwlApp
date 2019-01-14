@@ -2,8 +2,11 @@ package com.niles.mime.vm;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 
+import com.alibaba.android.arouter.facade.Postcard;
 import com.niles.base.vm.BaseViewModel;
+import com.niles.base.vm.command.ClickCommand;
 
 /**
  * Created by Niles
@@ -14,6 +17,19 @@ public class MimeItemViewModel extends BaseViewModel {
 
     public final ObservableBoolean mTopLineShow = new ObservableBoolean(false);
     public final ObservableBoolean mBottomLineShow = new ObservableBoolean(true);
+    public final ObservableInt mMenuIconRes = new ObservableInt();
     public final ObservableField<String> mNameText = new ObservableField<>("");
+    private final Postcard mPostcard;
+    public final ClickCommand mClickCommand = new ClickCommand() {
+        @Override
+        public void onClick() {
+            if (mPostcard != null) {
+                mNavigationMessage.setValue(mPostcard);
+            }
+        }
+    };
 
+    public MimeItemViewModel(Postcard postcard) {
+        mPostcard = postcard;
+    }
 }

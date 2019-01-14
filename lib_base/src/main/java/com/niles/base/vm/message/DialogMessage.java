@@ -30,4 +30,20 @@ public class DialogMessage extends MutableLiveData<Boolean> {
             }
         });
     }
+
+    public void observeForever(@NonNull final DialogAble observer) {
+        super.observeForever(new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean open) {
+                if (open == null) {
+                    return;
+                }
+                if (open) {
+                    observer.showProgressDialog();
+                } else {
+                    observer.hideProgressDialog();
+                }
+            }
+        });
+    }
 }

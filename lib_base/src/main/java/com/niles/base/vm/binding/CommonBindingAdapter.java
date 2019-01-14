@@ -66,13 +66,20 @@ public class CommonBindingAdapter {
     }
 
     @BindingAdapter(value = {"common:url", "common:placeholderRes"}, requireAll = false)
-    public static void url(final ImageView imageView, String url, @DrawableRes int placeholderRes) {
+    public static void url(ImageView imageView, String url, @DrawableRes int placeholderRes) {
         if (!TextUtils.isEmpty(url)) {
             //使用Glide框架加载图片
             Glide.with(imageView.getContext())
                     .load(url)
-                    .apply(new RequestOptions().placeholder(placeholderRes))
+                    .apply(new RequestOptions()
+                            .centerCrop()
+                            .placeholder(placeholderRes))
                     .into(imageView);
         }
+    }
+
+    @BindingAdapter("common:imageResource")
+    public static void imageResource(ImageView imageView, @DrawableRes int resId) {
+        imageView.setImageResource(resId);
     }
 }

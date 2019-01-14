@@ -25,4 +25,15 @@ public class ToastMessage extends SingleLiveEvent<String> {
             }
         });
     }
+
+    public void observeForever(@NonNull final ToastAble observer) {
+        super.observeForever(new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                if (!TextUtils.isEmpty(s)) {
+                    observer.toast(s);
+                }
+            }
+        });
+    }
 }

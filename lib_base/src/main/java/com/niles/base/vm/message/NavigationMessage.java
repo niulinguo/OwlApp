@@ -25,4 +25,15 @@ public class NavigationMessage extends SingleLiveEvent<Postcard> {
             }
         });
     }
+
+    public void observeForever(@NonNull final NavigationAble observer) {
+        super.observeForever(new Observer<Postcard>() {
+            @Override
+            public void onChanged(@Nullable Postcard postcard) {
+                if (postcard != null) {
+                    observer.navigation(postcard);
+                }
+            }
+        });
+    }
 }

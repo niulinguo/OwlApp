@@ -32,4 +32,21 @@ public class SetResultMessage extends SingleLiveEvent<SetResultParamWrap> {
             }
         });
     }
+
+    public void observeForever(@NonNull final SetResultAble observer) {
+        super.observeForever(new Observer<SetResultParamWrap>() {
+            @Override
+            public void onChanged(@Nullable SetResultParamWrap setResultParamWrap) {
+                if (setResultParamWrap != null) {
+                    int resultCode = setResultParamWrap.getResultCode();
+                    Intent data = setResultParamWrap.getData();
+                    if (data == null) {
+                        observer.setActivityResult(resultCode);
+                    } else {
+                        observer.setActivityResult(resultCode, data);
+                    }
+                }
+            }
+        });
+    }
 }

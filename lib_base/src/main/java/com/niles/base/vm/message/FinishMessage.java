@@ -22,4 +22,13 @@ public class FinishMessage extends SingleLiveEvent<Void> {
             }
         });
     }
+
+    public void observeForever(@NonNull final FinishAble observer) {
+        super.observeForever(new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void aVoid) {
+                observer.finish();
+            }
+        });
+    }
 }

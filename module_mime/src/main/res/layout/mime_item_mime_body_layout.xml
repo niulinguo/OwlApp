@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:common="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,38 +21,57 @@
 
         <View
             style="@style/ViewLineStyle"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
             android:visibility="@{viewModel.mTopLineShow ? View.VISIBLE : View.GONE}"/>
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            common:onClick="@{viewModel.mClickCommand}">
 
             <ImageView
+                android:id="@+id/iv_menu_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:contentDescription="@string/app_name"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/mime_menu_00"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                common:imageResource="@{viewModel.mMenuIconRes}"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.mNameText}"/>
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="@{viewModel.mNameText}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/iv_menu_icon"
+                app:layout_constraintStart_toEndOf="@id/iv_menu_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="余额"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:contentDescription="@string/app_name"
-                android:src="@mipmap/ic_launcher"/>
-        </LinearLayout>
+                android:src="@mipmap/arrow_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
 
         <View
             style="@style/ViewLineStyle"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
             android:visibility="@{viewModel.mBottomLineShow ? View.VISIBLE : View.GONE}"/>
 
     </LinearLayout>

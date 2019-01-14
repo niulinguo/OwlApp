@@ -12,6 +12,14 @@ public class SetResultParamWrap {
     private int mResultCode;
     private Intent mData;
 
+    public SetResultParamWrap() {
+    }
+
+    public SetResultParamWrap(int resultCode, Intent data) {
+        mResultCode = resultCode;
+        mData = data;
+    }
+
     public int getResultCode() {
         return mResultCode;
     }

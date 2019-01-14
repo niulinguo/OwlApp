@@ -12,6 +12,14 @@ public class NavigationParamWrap {
     private Postcard mPostcard;
     private int mRc;
 
+    public NavigationParamWrap() {
+    }
+
+    public NavigationParamWrap(Postcard postcard, int rc) {
+        mPostcard = postcard;
+        mRc = rc;
+    }
+
     public Postcard getPostcard() {
         return mPostcard;
     }
