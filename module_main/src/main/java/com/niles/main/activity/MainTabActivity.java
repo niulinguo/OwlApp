@@ -10,10 +10,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.niles.base.activity.BaseActivity;
+import com.niles.base.router.RouterParamKey;
+import com.niles.base.router.RouterPath;
 import com.niles.main.R;
 import com.niles.main.databinding.MainActivityMainTabBinding;
-import com.niles.router.RouterParamKey;
-import com.niles.router.RouterPath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class MainTabActivity extends BaseActivity {
             }
         });
         if (fragment == null) {
-            fragment = (Fragment) ARouter.getInstance().build(RouterPath.RouterModule.Fragment.Lost).withString(RouterParamKey.NAME, mTabNames[index]).navigation(this);
+            fragment = (Fragment) ARouter.getInstance().build(RouterPath.BaseModule.Fragment.Lost).withString(RouterParamKey.NAME, mTabNames[index]).navigation(this);
         }
         return fragment;
     }
@@ -118,5 +118,6 @@ public class MainTabActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         mBinding.unbind();
+        mBinding = null;
     }
 }

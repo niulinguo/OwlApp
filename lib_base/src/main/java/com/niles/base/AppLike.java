@@ -1,5 +1,6 @@
 package com.niles.base;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.niles.base.app.BaseAppLike;
 import com.niles.instancepool.InstanceCreator;
@@ -30,6 +31,13 @@ public class AppLike extends BaseAppLike {
         // 初始化 SP
         Hawk.init(getApplication())
                 .build();
+
+        // 初始化阿里路由框架
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(getApplication());
     }
 
     @Override

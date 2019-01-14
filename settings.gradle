@@ -1,1 +1,1 @@
-include ':app', ':lib_router', ':lib_base', ':lib_res', ':module_main', ':module_message', ':module_mime', ':module_sign', ':module_home', ':module_work'
+include ':app', ':lib_base', ':lib_res', ':module_main', ':module_message', ':module_mime', ':module_sign', ':module_home', ':module_work'

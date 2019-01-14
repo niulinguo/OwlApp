@@ -9,13 +9,13 @@ import android.text.TextUtils;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
 import com.niles.base.AppLike;
+import com.niles.base.router.RouterParamKey;
+import com.niles.base.router.RouterPath;
+import com.niles.base.router.service.LoginService;
 import com.niles.base.vm.BaseViewModel;
 import com.niles.base.vm.command.ClickCommand;
 import com.niles.base.vm.model.NavigationParamWrap;
 import com.niles.instancepool.InstancePool;
-import com.niles.router.RouterParamKey;
-import com.niles.router.RouterPath;
-import com.niles.router.service.LoginService;
 
 /**
  * Created by Niles

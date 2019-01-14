@@ -9,14 +9,13 @@ import android.support.annotation.NonNull;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.niles.base.router.RouterPath;
+import com.niles.base.router.service.LoginService;
 import com.niles.base.vm.BaseViewModel;
 import com.niles.base.vm.MVVMBaseActivity;
 import com.niles.main.R;
 import com.niles.main.databinding.MainActivitySplashBinding;
 import com.niles.main.vm.SplashViewModel;
-import com.niles.router.RouterPath;
-import com.niles.router.service.LoginService;
 
 /**
  * 闪屏页
@@ -33,7 +32,6 @@ public class SplashActivity extends MVVMBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.main_activity_splash);
 
         // 页面绑定 ViewModel

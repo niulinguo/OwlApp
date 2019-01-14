@@ -16,6 +16,8 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.SectionEntity;
+import com.niles.base.router.RouterPath;
+import com.niles.base.router.service.LoginService;
 import com.niles.base.vm.MVVMBaseFragment;
 import com.niles.mime.R;
 import com.niles.mime.adapter.MimeAdapter;
@@ -23,8 +25,6 @@ import com.niles.mime.databinding.MimeFragmentHeadLayoutBinding;
 import com.niles.mime.databinding.MimeFragmentLayoutBinding;
 import com.niles.mime.vm.MimeItemViewModel;
 import com.niles.mime.vm.MimeViewModel;
-import com.niles.router.RouterPath;
-import com.niles.router.service.LoginService;
 
 import java.util.List;
 
@@ -76,6 +76,7 @@ public class MimeFragment extends MVVMBaseFragment<MimeViewModel> {
         }
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.mime_fragment_layout, container, false);
+        mBinding.includeTitle.setViewModel(mViewModel.mMimeTitleViewModel);
 
         mAdapter = createAdapter(mViewModel, inflater, container);
         mBinding.rvList.setAdapter(mAdapter);

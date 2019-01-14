@@ -30,13 +30,16 @@ android {
             jniLibs.srcDirs = ['libs']
             if (isBuildModule.toBoolean()) {
                 //独立运行
-                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                manifest.srcFile 'src/debug/AndroidManifest.xml'
+                resources {
+                    include 'src/debug/**'
+                }
             } else {
                 //合并到宿主
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 resources {
                     //正式版本时，排除debug文件夹下所有调试文件
-                    exclude '**/debug/**'
+                    exclude 'src/debug/**'
                 }
             }
         }
@@ -68,7 +71,6 @@ dependencies {
     androidTestImplementation rootProject.ext.support["test_espresso"]
 
     // 组件依赖基础库
-    api project(':lib_router')
     api project(':lib_base')
 
     // 组件中依赖阿里路由编译框架

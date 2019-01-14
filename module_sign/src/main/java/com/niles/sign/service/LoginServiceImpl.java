@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.niles.router.RouterPath;
-import com.niles.router.service.LoginService;
+import com.niles.base.router.RouterPath;
+import com.niles.base.router.service.LoginService;
 import com.orhanobut.hawk.Hawk;
 
 /**

@@ -11,10 +11,10 @@ import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.niles.base.router.RouterPath;
+import com.niles.base.router.service.LoginService;
 import com.niles.base.vm.BaseViewModel;
 import com.niles.base.vm.MVVMBaseActivity;
-import com.niles.router.RouterPath;
-import com.niles.router.service.LoginService;
 import com.niles.sign.R;
 import com.niles.sign.databinding.SignActivityLoginBinding;
 import com.niles.sign.vm.LoginViewModel;

@@ -22,7 +22,8 @@
         <me.majiajie.pagerbottomtabstrip.PageNavigationView
             android:id="@+id/tab_main_bottom"
             android:layout_width="match_parent"
-            android:layout_height="56dp"/>
+            android:layout_height="56dp"
+            android:background="@color/white"/>
 
     </LinearLayout>
 </layout>
