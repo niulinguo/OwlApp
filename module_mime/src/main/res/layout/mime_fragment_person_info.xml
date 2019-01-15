@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:common="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.niles.mime.vm.PersonInfoViewModel"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_general"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <View style="@style/ViewLineStyle"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding_horizontal"
+                    android:paddingLeft="@dimen/padding_horizontal"
+                    android:paddingTop="@dimen/padding_vertical"
+                    android:paddingEnd="@dimen/padding_horizontal"
+                    android:paddingRight="@dimen/padding_horizontal"
+                    android:paddingBottom="@dimen/padding_vertical"
+                    common:onClick="@{viewModel.mPersonPageClickCommand}">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="个人主页"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="@dimen/margin_horizontal"
+                        android:layout_marginRight="@dimen/margin_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/ic_launcher"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginLeft="@dimen/margin_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mIdentifySignClickCommand}">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="身份认证"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_horizontal"
+                        android:layout_marginRight="@dimen/margin_horizontal"
+                        android:text="牛琳果"
+                        android:textColor="@color/text_color_vice"
+                        android:textSize="@dimen/text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginLeft="@dimen/margin_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="支付宝账号"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="176******10"
+                        android:textColor="@color/text_color_vice"
+                        android:textSize="@dimen/text_size"
+                        tools:ignore="HardcodedText"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginLeft="@dimen/margin_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mMimeQCodeClickCommand}">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="我的二维码"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_vertical"
+                        android:layout_marginRight="@dimen/margin_vertical"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/mime_qcode"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginLeft="@dimen/margin_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mUsernameClickCommand}">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="淘宝会员名"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_horizontal"
+                        android:layout_marginRight="@dimen/margin_horizontal"
+                        android:text="牛琳果"
+                        android:textColor="@color/text_color_vice"
+                        android:textSize="@dimen/text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View style="@style/ViewLineStyle"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_general"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <View style="@style/ViewLineStyle"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mAddressClickCommand}"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="我的收货地址"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginLeft="@dimen/margin_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mInvoiceClickCommand}"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="我的发票抬头"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View style="@style/ViewLineStyle"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_general"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <View style="@style/ViewLineStyle"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mInviteClickCommand}"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="邀请有礼"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_horizontal"
+                        android:layout_marginRight="@dimen/margin_horizontal"
+                        android:text="红包拿不停"
+                        android:textColor="@color/text_color_red"
+                        android:textSize="@dimen/text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    android:layout_marginStart="@dimen/margin_horizontal"
+                    android:layout_marginLeft="@dimen/margin_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_horizontal"
+                    common:onClick="@{viewModel.mCollectClickCommand}"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="我的收藏"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_text_size"
+                        tools:ignore="HardcodedText"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/arrow_right_black"/>
+
+                </LinearLayout>
+
+                <View style="@style/ViewLineStyle"/>
+
+            </LinearLayout>
+
+            <View
+                style="@style/ViewGroupLineStyle"
+                android:layout_height="@dimen/margin_general"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

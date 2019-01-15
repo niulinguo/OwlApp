@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.niles.mime"/>
+          package="com.niles.mime">
+
+    <application>
+        <activity android:name=".activity.PersonInfoActivity"/>
+    </application>
+</manifest>

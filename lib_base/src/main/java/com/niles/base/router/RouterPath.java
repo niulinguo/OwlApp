@@ -81,6 +81,9 @@ public interface RouterPath {
 
             // 我的页
             String Mime = "/mime/fragment/mime";
+
+            // 我的信息
+            String Info = "/mime/fragment/info";
         }
     }
 

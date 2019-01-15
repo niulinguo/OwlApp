@@ -33,6 +33,30 @@ public abstract class BaseActivity extends SeparateActivity implements
         SetResultAble {
 
     private AlertDialog mProgressDialog;
+    private NavigationCallback mNavigationCallback = new NavigationCallback() {
+        @Override
+        public void onFound(Postcard postcard) {
+
+        }
+
+        @Override
+        public void onLost(Postcard postcard) {
+            ARouter.getInstance()
+                    .build(RouterPath.BaseModule.Activity.Lost)
+                    .withString(RouterParamKey.NAME, postcard.getPath())
+                    .navigation(thisActivity());
+        }
+
+        @Override
+        public void onArrival(Postcard postcard) {
+
+        }
+
+        @Override
+        public void onInterrupt(Postcard postcard) {
+
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,58 +105,26 @@ public abstract class BaseActivity extends SeparateActivity implements
 
     @Override
     public void navigation(Postcard postcard) {
-        postcard.navigation(thisActivity(), new NavigationCallback() {
-            @Override
-            public void onFound(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onLost(Postcard postcard) {
-                ARouter.getInstance()
-                        .build(RouterPath.BaseModule.Activity.Lost)
-                        .withString(RouterParamKey.NAME, postcard.getPath())
-                        .navigation(thisActivity());
-            }
-
-            @Override
-            public void onArrival(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onInterrupt(Postcard postcard) {
-
-            }
-        });
+        try {
+            postcard.navigation(thisActivity(), mNavigationCallback);
+        } catch (Exception e) {
+            ARouter.getInstance()
+                    .build(RouterPath.BaseModule.Activity.Lost)
+                    .withString(RouterParamKey.NAME, postcard.getPath() + e.toString())
+                    .navigation(thisActivity());
+        }
     }
 
     @Override
     public void navigation(Postcard postcard, int rc) {
-        postcard.navigation(thisActivity(), rc, new NavigationCallback() {
-            @Override
-            public void onFound(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onLost(Postcard postcard) {
-                ARouter.getInstance()
-                        .build(RouterPath.BaseModule.Activity.Lost)
-                        .withString(RouterParamKey.NAME, postcard.getPath())
-                        .navigation(thisActivity());
-            }
-
-            @Override
-            public void onArrival(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onInterrupt(Postcard postcard) {
-
-            }
-        });
+        try {
+            postcard.navigation(thisActivity(), rc, mNavigationCallback);
+        } catch (Exception e) {
+            ARouter.getInstance()
+                    .build(RouterPath.BaseModule.Activity.Lost)
+                    .withString(RouterParamKey.NAME, postcard.getPath() + e.toString())
+                    .navigation(thisActivity());
+        }
     }
 
     @Override

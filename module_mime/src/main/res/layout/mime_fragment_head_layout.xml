@@ -16,14 +16,14 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        common:onClick="@{viewModel.mClickCommand}"
-        android:background="@color/colorPrimary">
+        android:background="@color/color_primary"
+        common:onClick="@{viewModel.mClickCommand}">
 
         <ImageView
             android:id="@+id/iv_avatar"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/margin_general"
             android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,8 +36,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="@dimen/margin_general"
+            android:layout_marginLeft="@dimen/margin_general"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/iv_avatar"
@@ -56,7 +56,7 @@
                 android:id="@+id/tv_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/margin_general"
                 android:text="@{viewModel.mMobileText}"
                 android:textColor="@color/white"
                 tools:text="17610822810"/>
@@ -65,8 +65,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginEnd="@dimen/margin_horizontal"
+            android:layout_marginRight="@dimen/margin_horizontal"
             android:contentDescription="@string/app_name"
             android:src="@mipmap/arrow_right_white"
             app:layout_constraintBottom_toBottomOf="parent"

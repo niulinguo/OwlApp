@@ -6,30 +6,30 @@
         <!-- 使用 API Level 22以上编译的话，要拿掉前綴字 -->
         <item name="windowNoTitle">true</item>
         <!--colorPrimary 对应ToolBar的颜色-->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/color_primary</item>
         <!--colorPrimaryDark 对应状态栏的颜色-->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <!--colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。-->
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/color_accent</item>
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="ViewLineStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/viewLineColor</item>
+        <item name="android:layout_height">@dimen/line_height</item>
+        <item name="android:background">@color/view_line_color</item>
     </style>
 
     <style name="ViewGroupLineStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">8dp</item>
-        <item name="android:background">@color/appBackColor</item>
+        <item name="android:layout_height">@dimen/margin_vertical</item>
+        <item name="android:background">@color/app_back_color</item>
     </style>
 
     <style name="ViewVerticalLineStyle">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/viewLineColor</item>
+        <item name="android:background">@color/view_line_color</item>
     </style>
 
 </resources>

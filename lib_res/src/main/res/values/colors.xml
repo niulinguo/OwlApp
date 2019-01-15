@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="color_primary">#008577</color>
+    <color name="color_primary_dark">#00574B</color>
+    <color name="color_accent">#D81B60</color>
 
     <color name="black">#333</color>
     <color name="white">#fff</color>
 
-    <color name="textColor">#333333</color>
-    <color name="textColorVice">#6C6C6C</color>
-    <color name="textColorRed">#D51717</color>
-    <color name="textColorHint">#999999</color>
+    <color name="text_color">#333333</color>
+    <color name="text_color_vice">#6C6C6C</color>
+    <color name="text_color_red">#D51717</color>
+    <color name="text_color_hint">#999999</color>
 
-    <color name="appColor">#FF2041</color>
-    <color name="appBackColor">#F4F3F3</color>
+    <color name="app_color">#FF2041</color>
+    <color name="app_back_color">#F4F3F3</color>
 
-    <color name="viewLineColor">#F0F0F0</color>
+    <color name="view_line_color">#F0F0F0</color>
 </resources>
