@@ -12,8 +12,7 @@ import com.niles.base.vm.BaseViewModel;
 import com.niles.base.vm.command.ItemChildClickCommand;
 import com.niles.base.vm.command.ItemClickCommand;
 import com.niles.mime.R;
-import com.niles.mime.model.MimeItemBodyModel;
-import com.niles.mime.model.MimeItemGroupModel;
+import com.niles.mime.model.MimeItemMenuModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +21,13 @@ import java.util.List;
  * Created by Niles
  * Date 2019/1/9 09:37
  * Email niulinguo@163.com
+ * <p>
+ * 我的页面
+ *
+ * @see com.niles.mime.fragment.MimeFragment
  */
 public class MimeViewModel extends BaseViewModel {
 
-    public final MimeTitleViewModel mMimeTitleViewModel = initChildViewModel(new MimeTitleViewModel());
-    public final MimeHeadViewModel mHeadViewModel = initChildViewModel(new MimeHeadViewModel());
     public final MutableLiveData<List<SectionEntity<MimeItemViewModel>>> mListItemData = new MutableLiveData<>();
     public final ItemClickCommand mItemClickCommand = new ItemClickCommand() {
         @Override
@@ -40,18 +41,24 @@ public class MimeViewModel extends BaseViewModel {
 
         }
     };
+
+    public final MimeTitleViewModel mTitleViewModel;
+    public final MimeHeadViewModel mHeadViewModel;
     private final LoginService mLoginService;
 
     public MimeViewModel(LoginService loginService) {
         mLoginService = loginService;
+
+        mTitleViewModel = initChildViewModel(new MimeTitleViewModel(mLoginService));
+        mHeadViewModel = initChildViewModel(new MimeHeadViewModel(mLoginService));
 
         init();
     }
 
     private void init() {
 
-        mMimeTitleViewModel.mTitleText.set("我的");
-        mMimeTitleViewModel.mSettingText.set("设置");
+        mTitleViewModel.mTitleText.set("我的");
+        mTitleViewModel.mSettingText.set("设置");
 
         mHeadViewModel.mUsernameText.set("张三");
         mHeadViewModel.mMobileText.set("17610822222");
@@ -88,7 +95,7 @@ public class MimeViewModel extends BaseViewModel {
         mListItemData.setValue(value);
     }
 
-    private MimeItemBodyModel createItem(String name, @DrawableRes int iconRes, boolean topLine, boolean bottomLine, String path) {
+    private MimeItemMenuModel createItem(String name, @DrawableRes int iconRes, boolean topLine, boolean bottomLine, String path) {
         MimeItemViewModel viewModel = new MimeItemViewModel(ARouter.getInstance()
                 .build(path)
                 .withString(RouterParamKey.NAME, name));
@@ -96,26 +103,14 @@ public class MimeViewModel extends BaseViewModel {
         viewModel.mNameText.set(name);
         viewModel.mMenuIconRes.set(iconRes);
         viewModel.mBottomLineShow.set(bottomLine);
-        return new MimeItemBodyModel(initChildViewModel(viewModel));
+        return new MimeItemMenuModel(initChildViewModel(viewModel));
     }
 
-    private MimeItemGroupModel createGroupLine(boolean topLine, boolean bottomLine) {
+    private MimeItemMenuModel createGroupLine(boolean topLine, boolean bottomLine) {
         MimeItemViewModel viewModel = new MimeItemViewModel(null);
         viewModel.mTopLineShow.set(topLine);
         viewModel.mBottomLineShow.set(bottomLine);
-        return new MimeItemGroupModel("", initChildViewModel(viewModel));
-    }
-
-    private void logout() {
-        mLoginService.logout();
-
-        mNavigationMessage.setValue(ARouter
-                .getInstance()
-                .build(RouterPath.SignModule.Activity.Login));
-
-        mFinishMessage.setValue(null);
-
-        mToastMessage.setValue("请重新登录");
+        return new MimeItemMenuModel("", initChildViewModel(viewModel));
     }
 
     @Override

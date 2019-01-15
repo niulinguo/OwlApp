@@ -18,6 +18,10 @@ import java.util.List;
  * Created by Niles
  * Date 2019/1/8 15:04
  * Email niulinguo@163.com
+ * <p>
+ * 我的页面 - Menu List
+ *
+ * @see com.niles.mime.fragment.MimeFragment
  */
 public class MimeAdapter extends BaseSectionQuickAdapter<SectionEntity<MimeItemViewModel>, BaseViewHolder> {
     public MimeAdapter(List<SectionEntity<MimeItemViewModel>> dataList) {

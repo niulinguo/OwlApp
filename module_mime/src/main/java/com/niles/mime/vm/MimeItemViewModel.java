@@ -12,6 +12,10 @@ import com.niles.base.vm.command.ClickCommand;
  * Created by Niles
  * Date 2019/1/8 15:40
  * Email niulinguo@163.com
+ * <p>
+ * 我的页面 - Item Menu
+ *
+ * @see com.niles.mime.adapter.MimeAdapter
  */
 public class MimeItemViewModel extends BaseViewModel {
 
@@ -24,7 +28,7 @@ public class MimeItemViewModel extends BaseViewModel {
         @Override
         public void onClick() {
             if (mPostcard != null) {
-                mNavigationMessage.setValue(mPostcard);
+                navigation(mPostcard);
             }
         }
     };

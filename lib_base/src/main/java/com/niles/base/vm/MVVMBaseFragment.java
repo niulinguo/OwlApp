@@ -30,7 +30,7 @@ public abstract class MVVMBaseFragment<VM extends BaseViewModel> extends BaseFra
         1、initViewModel() 方法必须在 Lifecycle.Event.ON_CREATE 之后调用才起作用(看 observe 源码)
         2、在 onCreate 方法执行完毕之后，Lifecycle.Event.ON_CREATE 才会被调用
         3、onCreate 时获取的状态为 INITIALIZED 或者 DESTROYED
-         */
+        */
         getLifecycle().addObserver(new GenericLifecycleObserver() {
             @Override
             public void onStateChanged(LifecycleOwner source, Lifecycle.Event event) {

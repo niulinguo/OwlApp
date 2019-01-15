@@ -1,6 +1,7 @@
 package com.niles.sign.service;
 
 import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -24,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
     private static final String SP_KEY_SIGN_PASSWORD = "SP_KEY_SIGN_PASSWORD";
     private static final String SP_KEY_SIGN_TOKEN = "SP_KEY_SIGN_TOKEN";
     private static final String SP_KEY_SIGN_LOGIN_INFO = "SP_KEY_SIGN_LOGIN_INFO";
-    private final LoginStatusMessage mLoginStatusMessage = new LoginStatusMessage();
+    private final MutableLiveData<Boolean> mLoginStatusMessage = new MutableLiveData<>();
     private boolean mRememberPwd;
     private String mUsername;
     private String mPassword;

@@ -15,7 +15,6 @@ public class MyApp extends BaseApp {
     @Override
     protected void createAppLike(List<ApplicationLike> appLikeList) {
         appLikeList.add(new com.niles.base.AppLike());
-        appLikeList.add(new com.niles.router.AppLike());
         appLikeList.add(new com.niles.home.AppLike());
         appLikeList.add(new com.niles.main.AppLike());
         appLikeList.add(new com.niles.message.AppLike());

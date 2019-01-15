@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.niles.base.activity.BaseActivity;
 import com.niles.base.router.RouterParamKey;
@@ -44,29 +42,14 @@ public class MainTabActivity extends BaseActivity {
     }
 
     private Fragment createFragment(String routerPath, int index) {
-        Fragment fragment = (Fragment) ARouter.getInstance().build(routerPath).navigation(this, new NavigationCallback() {
-            @Override
-            public void onFound(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onLost(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onArrival(Postcard postcard) {
-
-            }
-
-            @Override
-            public void onInterrupt(Postcard postcard) {
-
-            }
-        });
+        Fragment fragment = (Fragment) ARouter.getInstance()
+                .build(routerPath)
+                .navigation(this);
         if (fragment == null) {
-            fragment = (Fragment) ARouter.getInstance().build(RouterPath.BaseModule.Fragment.Lost).withString(RouterParamKey.NAME, mTabNames[index]).navigation(this);
+            fragment = (Fragment) ARouter.getInstance()
+                    .build(RouterPath.BaseModule.Fragment.Lost)
+                    .withString(RouterParamKey.NAME, mTabNames[index])
+                    .navigation(this);
         }
         return fragment;
     }

@@ -8,10 +8,14 @@ import com.niles.mime.vm.MimeItemViewModel;
  * Date 2019/1/9 13:44
  * Email niulinguo@163.com
  */
-public class MimeItemGroupModel extends SectionEntity<MimeItemViewModel> {
+public class MimeItemMenuModel extends SectionEntity<MimeItemViewModel> {
 
-    public MimeItemGroupModel(String header, MimeItemViewModel mimeItemViewModel) {
+    public MimeItemMenuModel(String header, MimeItemViewModel mimeItemViewModel) {
         super(true, header);
         t = mimeItemViewModel;
+    }
+
+    public MimeItemMenuModel(MimeItemViewModel mimeItemViewModel) {
+        super(mimeItemViewModel);
     }
 }

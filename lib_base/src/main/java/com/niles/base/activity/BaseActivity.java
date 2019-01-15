@@ -81,7 +81,7 @@ public abstract class BaseActivity extends SeparateActivity implements
 
     @Override
     public void navigation(Postcard postcard) {
-        postcard.navigation(this, new NavigationCallback() {
+        postcard.navigation(thisActivity(), new NavigationCallback() {
             @Override
             public void onFound(Postcard postcard) {
 
@@ -89,8 +89,7 @@ public abstract class BaseActivity extends SeparateActivity implements
 
             @Override
             public void onLost(Postcard postcard) {
-                ARouter
-                        .getInstance()
+                ARouter.getInstance()
                         .build(RouterPath.BaseModule.Activity.Lost)
                         .withString(RouterParamKey.NAME, postcard.getPath())
                         .navigation(thisActivity());
@@ -110,7 +109,7 @@ public abstract class BaseActivity extends SeparateActivity implements
 
     @Override
     public void navigation(Postcard postcard, int rc) {
-        postcard.navigation(this, rc, new NavigationCallback() {
+        postcard.navigation(thisActivity(), rc, new NavigationCallback() {
             @Override
             public void onFound(Postcard postcard) {
 
@@ -118,8 +117,7 @@ public abstract class BaseActivity extends SeparateActivity implements
 
             @Override
             public void onLost(Postcard postcard) {
-                ARouter
-                        .getInstance()
+                ARouter.getInstance()
                         .build(RouterPath.BaseModule.Activity.Lost)
                         .withString(RouterParamKey.NAME, postcard.getPath())
                         .navigation(thisActivity());

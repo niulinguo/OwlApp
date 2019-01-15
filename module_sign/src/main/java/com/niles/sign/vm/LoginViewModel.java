@@ -14,7 +14,6 @@ import com.niles.base.router.RouterPath;
 import com.niles.base.router.service.LoginService;
 import com.niles.base.vm.BaseViewModel;
 import com.niles.base.vm.command.ClickCommand;
-import com.niles.base.vm.model.NavigationParamWrap;
 import com.niles.instancepool.InstancePool;
 
 /**
@@ -42,16 +41,12 @@ public class LoginViewModel extends BaseViewModel {
     public final ClickCommand mRegisterClickCommand = new ClickCommand() {
         @Override
         public void onClick() {
-            NavigationParamWrap paramWrap = new NavigationParamWrap();
-            paramWrap.setRc(RC_REGISTER);
-            paramWrap.setPostcard(ARouter
-                    .getInstance()
-                    .build(RouterPath.SignModule.Activity.REGISTER)
-                    .withString(RouterParamKey.NAME, mUserEditText.get())
-                    .withString(RouterParamKey.PASSWORD, mPasswordText.get())
-            );
             // 跳转到注册页面-有结果跳转
-            mNavigationWithRcMessage.setValue(paramWrap);
+            navigation(ARouter.getInstance()
+                            .build(RouterPath.SignModule.Activity.REGISTER)
+                            .withString(RouterParamKey.NAME, mUserEditText.get())
+                            .withString(RouterParamKey.PASSWORD, mPasswordText.get()),
+                    RC_REGISTER);
         }
     };
     /**
@@ -60,16 +55,12 @@ public class LoginViewModel extends BaseViewModel {
     public final ClickCommand mFindPwdClickCommand = new ClickCommand() {
         @Override
         public void onClick() {
-            NavigationParamWrap paramWrap = new NavigationParamWrap();
-            paramWrap.setRc(RC_FIND_PWD);
-            paramWrap.setPostcard(ARouter
-                    .getInstance()
-                    .build(RouterPath.SignModule.Activity.FIND_PW)
-                    .withString(RouterParamKey.NAME, mUserEditText.get())
-                    .withString(RouterParamKey.PASSWORD, mPasswordText.get())
-            );
             // 跳转到注册页面-有结果跳转
-            mNavigationWithRcMessage.setValue(paramWrap);
+            navigation(ARouter.getInstance()
+                            .build(RouterPath.SignModule.Activity.FIND_PW)
+                            .withString(RouterParamKey.NAME, mUserEditText.get())
+                            .withString(RouterParamKey.PASSWORD, mPasswordText.get()),
+                    RC_FIND_PWD);
         }
     };
     /**
@@ -93,23 +84,23 @@ public class LoginViewModel extends BaseViewModel {
 
             // 检查用户名
             if (TextUtils.isEmpty(username)) {
-                mToastMessage.setValue("请填写用户名");
+                toast("请填写用户名");
                 return;
             }
 
             // 检查密码
             if (TextUtils.isEmpty(password)) {
-                mToastMessage.setValue("请填写密码");
+                toast("请填写密码");
                 return;
             }
 
             // 检查用户协议
             if (!readProtocol) {
-                mToastMessage.setValue("请阅读协议");
+                toast("请阅读协议");
                 return;
             }
 
-            mDialogMessage.setValue(true);
+            showProgressDialog();
             InstancePool.get(AppLike.class).getHandler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -121,6 +112,22 @@ public class LoginViewModel extends BaseViewModel {
 
     public LoginViewModel(LoginService loginService) {
         mLoginService = loginService;
+
+        // 用户名初始化
+        String lastUsername = mLoginService.getLastUsername();
+        if (!TextUtils.isEmpty(lastUsername)) {
+            mUserEditText.set(lastUsername);
+        }
+
+        // 密码初始化
+        boolean rememberPwd = mLoginService.isRememberPwd();
+        mRememberPwdChecked.set(rememberPwd);
+        if (rememberPwd) {
+            String password = mLoginService.getPassword(lastUsername);
+            if (!TextUtils.isEmpty(password)) {
+                mPasswordText.set(password);
+            }
+        }
     }
 
     /**
@@ -134,7 +141,7 @@ public class LoginViewModel extends BaseViewModel {
      */
     private void onLoginSuccess(String username, boolean rememberPwd, String password, String token, String loginInfo) {
         // 隐藏 Dialog
-        mDialogMessage.setValue(false);
+        hideProgressDialog();
 
         // 保存登录信息
         mLoginService.loginByPwdSuccess(username,
@@ -145,15 +152,14 @@ public class LoginViewModel extends BaseViewModel {
         );
 
         // 跳转主页面
-        mNavigationMessage.setValue(ARouter
-                .getInstance()
+        navigation(ARouter.getInstance()
                 .build(RouterPath.MainModule.Activity.MainTab));
 
         // 设置结果-登录成功
-        mSimpleSetResultMessage.setValue(RESULT_OK);
+        setActivityResult(RESULT_OK);
 
         // 关闭页面
-        mFinishMessage.setValue(null);
+        finish();
     }
 
     /**
@@ -167,7 +173,7 @@ public class LoginViewModel extends BaseViewModel {
      * 注册成功
      */
     private void onRegisterSuccess() {
-        mFinishMessage.setValue(null);
+        finish();
     }
 
     @Override

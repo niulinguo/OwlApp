@@ -32,6 +32,8 @@ import java.util.List;
  * Created by Niles
  * Date 2019/1/7 14:03
  * Email niulinguo@163.com
+ * <p>
+ * 我的页面
  */
 @Route(path = RouterPath.MimeModule.Fragment.Mime)
 public class MimeFragment extends MVVMBaseFragment<MimeViewModel> {
@@ -76,7 +78,7 @@ public class MimeFragment extends MVVMBaseFragment<MimeViewModel> {
         }
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.mime_fragment_layout, container, false);
-        mBinding.includeTitle.setViewModel(mViewModel.mMimeTitleViewModel);
+        mBinding.includeTitle.setViewModel(mViewModel.mTitleViewModel);
 
         mAdapter = createAdapter(mViewModel, inflater, container);
         mBinding.rvList.setAdapter(mAdapter);

@@ -11,7 +11,6 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.niles.base.router.RouterPath;
 import com.niles.base.router.service.LoginService;
-import com.niles.base.vm.BaseViewModel;
 import com.niles.base.vm.MVVMBaseActivity;
 import com.niles.main.R;
 import com.niles.main.databinding.MainActivitySplashBinding;
@@ -21,13 +20,12 @@ import com.niles.main.vm.SplashViewModel;
  * 闪屏页
  */
 @Route(path = RouterPath.MainModule.Activity.Splash)
-public class SplashActivity extends MVVMBaseActivity {
+public class SplashActivity extends MVVMBaseActivity<SplashViewModel> {
 
     @Autowired(name = RouterPath.SignModule.Service.Login)
     LoginService mLoginService;
 
     private MainActivitySplashBinding mBinding;
-    private SplashViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +40,9 @@ public class SplashActivity extends MVVMBaseActivity {
     }
 
     @Override
-    protected BaseViewModel createViewModel() {
+    protected SplashViewModel createViewModel() {
         // 获取 ViewModel
-        mViewModel = ViewModelProviders.of(this, new ViewModelProvider.Factory() {
+        return ViewModelProviders.of(this, new ViewModelProvider.Factory() {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
@@ -52,13 +50,12 @@ public class SplashActivity extends MVVMBaseActivity {
                 return (T) new SplashViewModel(mLoginService);
             }
         }).get(SplashViewModel.class);
-
-        return mViewModel;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mBinding.unbind();
+        mBinding = null;
     }
 }

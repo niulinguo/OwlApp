@@ -71,14 +71,14 @@ public class SplashViewModel extends BaseViewModel {
 
     private void toMainAction() {
         if (mLoginService.hasLogin()) {
-            mNavigationMessage.setValue(ARouter
+            navigation(ARouter
                     .getInstance()
                     .build(RouterPath.MainModule.Activity.MainTab));
         } else {
-            mNavigationMessage.setValue(ARouter
+            navigation(ARouter
                     .getInstance()
                     .build(RouterPath.SignModule.Activity.Login));
         }
-        mFinishMessage.setValue(null);
+        finish();
     }
 }
